@@ -78,10 +78,6 @@ if uploaded_file is not None:
     st.success(f"### Predicted Class: **{predicted_label}**")
     
     # --- BREAKDOWN OF PROBABILITIES ---
-    with st.expander("View Full Confidence Metrics Across All 10 Classes"):
-        for i, class_name in enumerate(data_loader.CLASSES):
-            prob = probabilities[i].item() * 100
-            st.write(f"**{class_name}**: {prob:.2f}%")
-            st.progress(int(prob))
+    
 else:
     st.info("ℹ️ Upload a sample image above to generate an AI model prediction output.")
