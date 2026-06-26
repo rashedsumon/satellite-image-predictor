@@ -12,7 +12,7 @@ import model
 # --- PAGE SETUP ---
 st.set_page_config(page_title="EuroSAT AI Classifier", page_icon="🌍", layout="centered")
 
-st.title("🌍 EuroSAT Land Cover Predictor")
+st.title("🌍  Satellite Image Predictor")
 st.markdown("This AI model processes satellite imagery to classify land usage.")
 
 # --- AUTO-DOWNLOAD DATASET / ASSETS ---
@@ -31,16 +31,9 @@ with st.spinner("Downloading EuroSAT dataset assets via kagglehub... Please wait
     ai_model, dataset_path = initialize_app()
 
 # --- EXPLAINING ML CONCEPTS ---
-with st.sidebar:
-    st.header("🧠 Machine Learning Specs")
-    st.markdown("**User Input (Features / $X$):**")
-    st.caption("A single $64 \\times 64$ pixel satellite image patch. To the computer, this is interpreted as a grid matrix of color-intensity values.")
-    
-    st.markdown("**Model Output (Target / $\\hat{y}$):**")
-    st.caption("A specific land cover category label paired with a calculated confidence percentage score.")
 
 # --- FILE UPLOADER (USER INPUT) ---
-st.subheader("1. Upload User Input ($X$)")
+
 uploaded_file = st.file_uploader("Upload a satellite image (.png, .jpg, .jpeg)", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
@@ -83,8 +76,7 @@ if uploaded_file is not None:
 
     # Display results prominently to the end-user
     st.success(f"### Predicted Class: **{predicted_label}**")
-    st.metric(label="Prediction Confidence Score", value=f"{confidence_percentage:.2f}%")
-
+    
     # --- BREAKDOWN OF PROBABILITIES ---
     with st.expander("View Full Confidence Metrics Across All 10 Classes"):
         for i, class_name in enumerate(data_loader.CLASSES):
