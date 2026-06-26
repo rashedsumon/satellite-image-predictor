@@ -1,0 +1,15 @@
+# Ignore downloaded dataset files
+euroSAT/
+EuroSAT/
+EuroSATallBands/
+2750/
+.kaggle/
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Local environment files
+.streamlit/config.toml
+.venv/
+env/
