@@ -61,7 +61,7 @@ if uploaded_file is not None:
     input_tensor = preprocess(image).unsqueeze(0)
 
     # --- MODEL INFERENCE (PREDICTION) ---
-    st.subheader("2. Model Output Prediction ($\\hat{y}$)")
+    
     
     with torch.no_grad():
         # Pass input matrix X into the neural network to calculate logits
